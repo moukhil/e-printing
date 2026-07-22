@@ -363,7 +363,7 @@ Full Stack Developer | Java Developer | MERN Stack Developer
 
 - GitHub: https://github.com/moukhil
 - LinkedIn: https://linkedin.com/in/moukhil-shaik
-- Email: yourmail@gmail.com
+- Email: shaikmoukhil@gmail.com
 
 ---
 
