@@ -23,8 +23,16 @@ export default function Orders() {
 
   const fetchOrders = async () => {
     try {
-      const res = await API.get("/orders");
+      const token = localStorage.getItem("token");
+
+      const res = await API.get("/orders", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
       setOrders(res.data);
+
     } catch (err) {
       console.error(err);
     } finally {
@@ -34,8 +42,19 @@ export default function Orders() {
 
   const removeOrder = async (id) => {
     try {
-      await API.delete(`/orders/${id}`);
-      setOrders((prev) => prev.filter((order) => order._id !== id));
+
+      const token = localStorage.getItem("token");
+
+      await API.delete(`/orders/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      setOrders((prev) =>
+        prev.filter((order) => order._id !== id)
+      );
+
     } catch (err) {
       console.error(err);
       showMessage("Failed to remove order.");
