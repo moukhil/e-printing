@@ -19,16 +19,24 @@ export default function Cart() {
   };
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const fetchCart = async () => {
     try {
       setLoading(true);
 
-      const res = await API.get("/cart");
+      const token = localStorage.getItem("token");
+
+      const res = await API.get("/cart", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       setCartItems(res.data);
+
     } catch (err) {
       console.error(err);
       showMessage("Failed to load cart.");
+
     } finally {
       setLoading(false);
     }
@@ -95,8 +103,8 @@ export default function Cart() {
       {msg && (
         <div
           className={`p-4 rounded-xl font-medium text-center transition-all ${msgType === "success"
-              ? "bg-green-100 border border-green-300 text-green-700"
-              : "bg-red-100 border border-red-300 text-red-700"
+            ? "bg-green-100 border border-green-300 text-green-700"
+            : "bg-red-100 border border-red-300 text-red-700"
             }`}
         >
           {msg}

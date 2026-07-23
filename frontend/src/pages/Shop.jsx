@@ -39,14 +39,19 @@ export default function Shop() {
     };
 
     try {
-      await API.post('/cart', item);
+      await API.post('/cart', item, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      });
+
       showMessage('Added to cart!');
+
     } catch (err) {
       console.error(err);
       showMessage('Failed to add to cart');
     }
   };
-
   const renderPreview = () => {
     if (!uploaded) return null;
 
