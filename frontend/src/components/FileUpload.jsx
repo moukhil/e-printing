@@ -86,7 +86,7 @@ export default function FileUpload({ onUploaded }) {
 
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/upload`,
+        `${import.meta.env.VITE_API_URL}/api/upload`,
         formData,
         {
           headers: {
