@@ -10,11 +10,15 @@ const router = express.Router();
 router.get('/', authMiddleware, async (req, res) => {
   try {
 
+    console.log("Logged user ID:", req.user.id);
+
     const orders = await Order.find({
       user: req.user.id
     }).sort({
       createdAt: -1
     });
+
+    console.log("Orders found:", orders);
 
     res.json(orders);
 
