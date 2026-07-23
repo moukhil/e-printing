@@ -91,18 +91,18 @@ function Login() {
     return (
 
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            {msg && (
-                <div
-                    className={`p-4 rounded-xl font-medium text-center transition-all ${msgType === "success"
-                        ? "bg-green-100 border border-green-300 text-green-700"
-                        : "bg-red-100 border border-red-300 text-red-700"
-                        }`}
-                >
-                    {msg}
-                </div>
-            )}
 
             <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+                {msg && (
+                    <div
+                        className={`p-4 rounded-xl font-medium text-center transition-all ${msgType === "success"
+                            ? "bg-green-100 border border-green-300 text-green-700"
+                            : "bg-red-100 border border-red-300 text-red-700"
+                            }`}
+                    >
+                        {msg}
+                    </div>
+                )}
 
 
                 <h1 className="text-3xl font-bold text-center text-indigo-600">
