@@ -40,7 +40,7 @@ export default function Shop() {
 
     try {
       await API.post('/cart', item);
-      aleshowMessagert('Added to cart!');
+      showMessage('Added to cart!');
     } catch (err) {
       console.error(err);
       showMessage('Failed to add to cart');
