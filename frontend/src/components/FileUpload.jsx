@@ -86,7 +86,7 @@ export default function FileUpload({ onUploaded }) {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/upload",
+        `${process.env.REACT_APP_API_URL}/api/upload`,
         formData,
         {
           headers: {
@@ -114,8 +114,8 @@ export default function FileUpload({ onUploaded }) {
       {msg && (
         <div
           className={`p-4 rounded-xl font-medium text-center transition-all ${msgType === "success"
-              ? "bg-green-100 border border-green-300 text-green-700"
-              : "bg-red-100 border border-red-300 text-red-700"
+            ? "bg-green-100 border border-green-300 text-green-700"
+            : "bg-red-100 border border-red-300 text-red-700"
             }`}
         >
           {msg}

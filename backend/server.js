@@ -50,7 +50,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   }
 
   res.json({
-    url: `http://localhost:${process.env.PORT}/uploads/${req.file.filename}`,
+    url: `http://localhost:${process.env.BASE_URL}/uploads/${req.file.filename}`,
     key: req.file.filename,
   });
 });
