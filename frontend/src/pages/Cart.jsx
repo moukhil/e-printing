@@ -73,29 +73,22 @@ export default function Cart() {
 
   const handleCheckout = async () => {
     try {
-
       const token = localStorage.getItem("token");
 
-      await API.post("/orders", {
-        items: cartItems,
-        totalPrice,
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`
+      await API.post(
+        "/orders",
+        {
+          items: cartItems,
+          totalPrice,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
 
       showMessage("Order placed successfully!");
-
-      await Promise.all(
-        cartItems.map((item) =>
-          API.delete(`/cart/${item._id}`, {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          })
-        )
-      );
 
       setCartItems([]);
       navigate("/orders");
@@ -105,7 +98,6 @@ export default function Cart() {
       showMessage("Failed to place order.");
     }
   };
-
 
   if (loading) {
     return (
