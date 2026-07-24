@@ -204,7 +204,7 @@ export default function Home() {
 
 
         <button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/login")}
           className="mt-8 bg-white text-indigo-700 px-10 py-4 rounded-full font-bold hover:scale-105 transition"
         >
           Start Printing Now
