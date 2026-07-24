@@ -48,11 +48,18 @@ export default function Cart() {
 
   const removeFromCart = async (id) => {
     try {
-      await API.delete(`/cart/${id}`);
+      const token = localStorage.getItem("token");
+
+      await API.delete(`/cart/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       setCartItems((prev) =>
         prev.filter((item) => item._id !== id)
       );
+
     } catch (err) {
       console.error(err);
       showMessage("Failed to remove item.");
